@@ -1,16 +1,26 @@
 import { IconButton } from "@material-ui/core";
-import { People, QuestionAnswer } from "@material-ui/icons";
+import { ArrowBackIos, People, QuestionAnswer } from "@material-ui/icons";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import WhatshotIcon from '@material-ui/icons/Whatshot';
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ backBtn }) => {
+  const history = useHistory();
   return (
     <div className={styles.header}>
-      <IconButton>
-        <People className={styles.icon} fontSize="large" />
-      </IconButton>
+      {backBtn ? (
+        <IconButton onClick={() => history.replace(backBtn)}>
+          <ArrowBackIos fontSize="large" className={styles.backBtn} />
+        </IconButton>
+      ) : (
+        <Link to="/chat">
+          <IconButton>
+            <People className={styles.icon} fontSize="large" />
+          </IconButton>
+        </Link>
+      )}
+
       {/* <WhatshotIcon fontSize='large' /> */}
       <Link to="/">
         <img
