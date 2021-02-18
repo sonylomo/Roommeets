@@ -6,15 +6,15 @@ import database from "./firebase";
 const Cards = () => {
   const [People, setPeople] = useState([]);
 
-  useEffect(() => {
-    const unsubscribe = database.collection("people").onSnapshot((snapshot) => {
-      setPeople(snapshot.docs.map((doc) => doc.data()));
-    });
+  // useEffect(() => {
+  //   const unsubscribe = database.collection("people").onSnapshot((snapshot) => {
+  //     setPeople(snapshot.docs.map((doc) => doc.data()));
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
 
   return (
     <div>
